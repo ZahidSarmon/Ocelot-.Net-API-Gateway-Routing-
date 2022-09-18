@@ -1,0 +1,41 @@
+version: '3.4'
+
+services:
+  authenticationapi:
+    container_name: authentication-api
+    image: ${DOCKER_REGISTRY-}authenticationapi
+    build:
+      context: .
+      dockerfile: AuthenticationWebAPI/Dockerfile
+    networks:
+      - backend
+
+  orderapi:
+    ontainer_name: order-api
+    image: ${DOCKER_REGISTRY-}orderapi
+    build:
+      context: .
+      dockerfile: OrderAPI/Dockerfile
+    networks:
+      - backend
+
+
+  productapi:
+    container_name: product-api
+    image: ${DOCKER_REGISTRY-}productapi
+    build:
+      context: .
+      dockerfile: ProductAPI/Dockerfile
+    networks:
+      - backend
+
+
+  apigateway:
+    container_name: gateway-api
+    image: ${DOCKER_REGISTRY-}apigateway
+    build:
+      context: .
+      dockerfile: ApiGateway/Dockerfile
+    networks:
+      - backend
+
